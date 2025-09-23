@@ -31,11 +31,13 @@ public class BoatMaker : MonoBehaviour
             // 만약 이전에 만든 위치라면 다른 위치로 정하고싶다.
             if (index == prevIdex)
             {
-                index++;
-                if (index > spawns.Length - 1)
-                {
-                    index = 0;
-                }
+                index = (index + 1) % spawns.Length;
+                //index = (index + spawns.Length - 1) % spawns.Length;
+                //index++;
+                //if (index > spawns.Length - 1)
+                //{
+                //    index = 0;
+                //}
             }
 
             Transform t = spawns[index].transform;
