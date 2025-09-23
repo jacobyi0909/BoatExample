@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 using Random = UnityEngine.Random;
 
@@ -8,13 +8,13 @@ public class OtherBoat : MonoBehaviour
     Vector3 dir;
     void Start()
     {
-        // ÅÂ¾î³¯ ¶§ ¹æÇâÀ» Á¤ÇÏ°í½Í´Ù.
-        // 30% È®·ü·Î ÁÖÀÎ°ø ¹æÇâ, ³ª¸ÓÁö È®·ü·Î´Â ¾Õ¹æÇâÀ¸·Î ¹æÇâÀ» Á¤ÇÏ°í½Í´Ù.
+        // íƒœì–´ë‚  ë•Œ ë°©í–¥ì„ ì •í•˜ê³ ì‹¶ë‹¤.
+        // 30% í™•ë¥ ë¡œ ì£¼ì¸ê³µ ë°©í–¥, ë‚˜ë¨¸ì§€ í™•ë¥ ë¡œëŠ” ì•ë°©í–¥ìœ¼ë¡œ ë°©í–¥ì„ ì •í•˜ê³ ì‹¶ë‹¤.
         int value = Random.Range(0, 10);
         if (value < 3)
         {
             GameObject player = GameObject.Find("Player");
-            // ³»°¡ ÇÃ·¹ÀÌ¾î¸¦ ÇâÇÏ´Â ¹æÇâÀ» ¾Ë°í½Í´Ù.
+            // ë‚´ê°€ í”Œë ˆì´ì–´ë¥¼ í–¥í•˜ëŠ” ë°©í–¥ì„ ì•Œê³ ì‹¶ë‹¤.
             dir = player.transform.position - this.transform.position;
             dir.Normalize();
             transform.forward = dir;
@@ -27,13 +27,13 @@ public class OtherBoat : MonoBehaviour
 
     void Update()
     {
-        // »ì¾Æ°¡¸é¼­ ±× ¹æÇâÀ¸·Î °è¼Ó °¡°í½Í´Ù.
+        // ì‚´ì•„ê°€ë©´ì„œ ê·¸ ë°©í–¥ìœ¼ë¡œ ê³„ì† ê°€ê³ ì‹¶ë‹¤.
         transform.position += dir * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // ¸¸¾à ºÎµúÈù »ó´ë°¡ Player¶ó¸é °á°ú¸¦ º¸°í½Í´Ù.
+        // ë§Œì•½ ë¶€ë”ªíŒ ìƒëŒ€ê°€ Playerë¼ë©´ ê²°ê³¼ë¥¼ ë³´ê³ ì‹¶ë‹¤.
         if (other.attachedRigidbody)
         {
             if (other.attachedRigidbody.gameObject.layer == LayerMask.NameToLayer("Player"))

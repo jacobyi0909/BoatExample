@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class BoatMaker : MonoBehaviour
 {
-    // Spawn¸ñ·ÏÀ» °¡Áö°í½Í´Ù.
+    // Spawnëª©ë¡ì„ ê°€ì§€ê³ ì‹¶ë‹¤.
     public Transform[] spawns;
-    // ÀÏÁ¤½Ã°£¸¶´Ù º¸Æ®°øÀå¿¡¼­ º¸Æ®¸¦ ¸¸µé¾î¼­ ³»À§Ä¡¿¡ ¹èÄ¡ÇÏ°í½Í´Ù.
+    // ì¼ì •ì‹œê°„ë§ˆë‹¤ ë³´íŠ¸ê³µìž¥ì—ì„œ ë³´íŠ¸ë¥¼ ë§Œë“¤ì–´ì„œ ë‚´ìœ„ì¹˜ì— ë°°ì¹˜í•˜ê³ ì‹¶ë‹¤.
     float curTime;
     public float makeTime = 2f;
     public GameObject boatFactory;
 
-    // ÀÌÀü À§Ä¡¸¦ ±â¾ïÇÏ°í½Í´Ù.
+    // ì´ì „ ìœ„ì¹˜ë¥¼ ê¸°ì–µí•˜ê³ ì‹¶ë‹¤.
     int prevIdex;
     
     void Start()
@@ -19,16 +19,16 @@ public class BoatMaker : MonoBehaviour
 
     void Update()
     {
-        // 1. ½Ã°£ÀÌ Èå¸£´Ù°¡
+        // 1. ì‹œê°„ì´ íë¥´ë‹¤ê°€
         curTime += Time.deltaTime;
-        // 2. ÇöÀç½Ã°£ÀÌ »ý¼º½Ã°£ÀÌ µÇ¸é
+        // 2. í˜„ìž¬ì‹œê°„ì´ ìƒì„±ì‹œê°„ì´ ë˜ë©´
         if (curTime > makeTime)
         {
             curTime = 0;
-            // 3. º¸Æ®°øÀå¿¡¼­ º¸Æ®¸¦ ¸¸µé¾î¼­ ³»À§Ä¡¿¡ ¹èÄ¡ÇÏ°í½Í´Ù.
+            // 3. ë³´íŠ¸ê³µìž¥ì—ì„œ ë³´íŠ¸ë¥¼ ë§Œë“¤ì–´ì„œ ë‚´ìœ„ì¹˜ì— ë°°ì¹˜í•˜ê³ ì‹¶ë‹¤.
             int index = Random.Range(0, spawns.Length);
 
-            // ¸¸¾à ÀÌÀü¿¡ ¸¸µç À§Ä¡¶ó¸é ´Ù¸¥ À§Ä¡·Î Á¤ÇÏ°í½Í´Ù.
+            // ë§Œì•½ ì´ì „ì— ë§Œë“  ìœ„ì¹˜ë¼ë©´ ë‹¤ë¥¸ ìœ„ì¹˜ë¡œ ì •í•˜ê³ ì‹¶ë‹¤.
             if (index == prevIdex)
             {
                 index++;

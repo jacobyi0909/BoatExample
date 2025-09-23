@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     Vector3 velocity;
     void Update()
     {
-        // »ç¿ëÀÚ°¡ ÀÔ·ÂÇÏ¸é »óÇÏÁÂ¿ì·Î ÀÌµ¿ÇÏ°í½Í´Ù.
+        // ì‚¬ìš©ìê°€ ì…ë ¥í•˜ë©´ ìƒí•˜ì¢Œìš°ë¡œ ì´ë™í•˜ê³ ì‹¶ë‹¤.
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
@@ -30,10 +30,10 @@ public class Player : MonoBehaviour
 
         Quaternion q = Quaternion.Euler(Vector3.up * h * angle * Time.deltaTime);
         rb.MoveRotation(rb.transform.rotation * q);
-        // ÇöÀçÀ§Ä¡ P = P0 + vt
-        // ¼ø°£ÀÌµ¿
+        // í˜„ì¬ìœ„ì¹˜ P = P0 + vt
+        // ìˆœê°„ì´ë™
         //transform.position = transform.position + velocity * Time.deltaTime;
-        // rb¸¦ ÀÌ¿ëÇÑ ÀÌµ¿
+        // rbë¥¼ ì´ìš©í•œ ì´ë™
         rb.MovePosition(rb.transform.position + velocity * Time.deltaTime);
 
         velocity = Vector3.Lerp(velocity, Vector3.zero, Time.deltaTime * 6);

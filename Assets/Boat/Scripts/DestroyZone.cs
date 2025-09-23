@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class DestroyZone : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class DestroyZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // ³Ê¸¦ ÆÄ±«ÇÏ°í½Í´Ù.
+        // ë„ˆë¥¼ íŒŒê´´í•˜ê³ ì‹¶ë‹¤.
         if (other.attachedRigidbody)
         {
             Destroy(other.attachedRigidbody.gameObject);
