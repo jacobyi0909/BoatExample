@@ -38,7 +38,7 @@ public class OtherBoat : MonoBehaviour
         {
             if (other.attachedRigidbody.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                Time.timeScale = 0;
+                ResultManager.instance.ShowResultUI();
             }
         }
     }

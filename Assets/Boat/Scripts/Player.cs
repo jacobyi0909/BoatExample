@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,7 +9,7 @@ public class Player : MonoBehaviour
     public static Player instance;
 
     public Rigidbody rb;
-
+    public GameObject defaultTailTarget;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,7 +18,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
+        POINT = 0;
     }
 
     public float speed = 20;
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
     int garbageCount;
     public Tail tailFactory;
     public GameObject lastTail = null;
+    List<Tail> tails = new List<Tail>();
     internal void AddGarbage(int addCount, Vector3 position)
     {
         garbageCount += addCount;
@@ -57,5 +60,35 @@ public class Player : MonoBehaviour
         tail.SetInfo(tailSpeed, lastTail);
 
         lastTail = tail.gameObject;
+        
+        tails.Add(tail);
+    }
+
+    int point;
+    public TextMeshProUGUI textPoint;
+
+    public int POINT
+    {
+        get { return point; }
+        set {
+            point = value;
+            textPoint.SetText(point.ToString());
+        }
+    }
+
+    internal void CalcGarbagePoint()
+    {
+        // UI에 point값을 반영하고싶다.
+        POINT += garbageCount * garbageCount;
+        
+        garbageCount = 0;
+        // tail들을 다 파괴하고싶다.
+        for (int i = 0; i < tails.Count; i++)
+        {
+            Destroy(tails[i].gameObject);
+        }
+        tails.Clear();
+
+        lastTail = defaultTailTarget;
     }
 }
