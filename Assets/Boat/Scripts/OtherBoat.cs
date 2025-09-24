@@ -13,7 +13,7 @@ public class OtherBoat : MonoBehaviour
         int value = Random.Range(0, 10);
         if (value < 3)
         {
-            GameObject player = GameObject.Find("Player");
+            GameObject player = Player.instance.gameObject;
             // 내가 플레이어를 향하는 방향을 알고싶다.
             dir = player.transform.position - this.transform.position;
             dir.Normalize();

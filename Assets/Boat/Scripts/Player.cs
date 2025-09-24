@@ -1,12 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
     public Rigidbody rb;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        Player.instance = this;
     }
 
     void Start()
@@ -37,5 +42,20 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.transform.position + velocity * Time.deltaTime);
 
         velocity = Vector3.Lerp(velocity, Vector3.zero, Time.deltaTime * 6);
+    }
+
+    int garbageCount;
+    public Tail tailFactory;
+    public GameObject lastTail = null;
+    internal void AddGarbage(int addCount, Vector3 position)
+    {
+        garbageCount += addCount;
+
+        Tail tail = Instantiate<Tail>(tailFactory, position, Quaternion.identity);
+
+        float tailSpeed = Mathf.Max(1f, 10f - garbageCount);
+        tail.SetInfo(tailSpeed, lastTail);
+
+        lastTail = tail.gameObject;
     }
 }
